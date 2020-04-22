@@ -1,26 +1,49 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import ValueSetting from "./components/ValueSetting";
+
+class App extends React.Component {
+
+	state = {
+		settingValues: [],
+		buttonsValues: []
+	};
+
+	render = () => {
+		return (
+			<div className="App">
+
+				<div className="SETTINGS_BLOCK">
+
+					<div className="SETTINGS">
+						<ValueSetting/>
+						<ValueSetting/>
+					</div>
+
+					<div className="SETUP-BUTTON">
+						<button>SET</button>
+					</div>
+
+				</div>
+
+
+				<div className="COUNTER_BLOCK">
+
+					<div className="COUNTER">
+						<span>1</span>
+					</div>
+
+					<div className="CONTROL-BUTTONS">
+						<button>INC</button>
+						<button>RESET</button>
+					</div>
+
+				</div>
+
+			</div>
+		);
+	}
 }
 
 export default App;
