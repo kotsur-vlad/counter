@@ -1,7 +1,8 @@
 import React from 'react';
 
 import './App.css';
-import ValueSetting from "./components/ValueSetting";
+import SettingsPanel from "./components/SettingsPanel";
+import CounterPanel from "./components/CounterPanel";
 
 class App extends React.Component {
 
@@ -18,7 +19,8 @@ class App extends React.Component {
 		startValue: 0,
 		maxValue: 1,
 		counter: 0,
-		disabled: false
+		disabled: false,
+		isFirstPanelDisabled: true
 	};
 
 	onIncClick = () => {
@@ -43,6 +45,10 @@ class App extends React.Component {
 	}
 
 	onSetClick = () => {
+		if (this.state.settingValues[0].value >= this.state.settingValues[1].value) {
+			alert ("eafwe");
+
+		}
 		this.state.settingValues.map (set => {
 			if (set.title === "start value: ") {
 				this.setState ({
@@ -58,17 +64,6 @@ class App extends React.Component {
 		this.setState ({
 			disabled: false
 		})
-
-
-		// this.setState ({
-		// 	counter: this.state.settingValues[0].value,
-		// 	startValue: this.state.settingValues[0].value,
-		// 	maxValue: this.state.settingValues[1].value,
-		// 	disabled: false
-		// })
-		// console.log(this.state.counter)
-		// console.log(this.state.startValue)
-		// console.log(this.state.maxValue)
 	};
 
 	changeValue = (settingId, newValue) => {
@@ -79,44 +74,44 @@ class App extends React.Component {
 			return set;
 		});
 		this.setState ({
-			settingValues: newSettings
+			settingValues: newSettings,
+			disabled: true
 		});
+		// this.setState ( (state) => {
+		// 	return {
+		// 		settingValues: newSettings,
+		// 		disabled: true
+		// 	}
+		// });
 	};
 
+	movingCursorOnBlocks11 = (element) => {
+		if (element) {
+			this.setState ({
+				isFirstPanelDisabled: false
+			})
+		}
+	};
+
+	movingCursorOnBlocks22 = (element) => {
+		if (element) {
+			this.setState ({
+				isFirstPanelDisabled: true
+			})
+		}
+	};
+
+
 	render = () => {
-
-		let settings = this.state.settingValues.map (set => <ValueSetting changeValue={this.changeValue}
-																		  settingValues={set}/>);
-
 		return (
 			<div className="App">
+				<SettingsPanel changeValue={this.changeValue} settingValues={this.state.settingValues}
+							   onSetClick={this.onSetClick} isFirstPanelDisabled={this.state.isFirstPanelDisabled}
+							   movingCursorOnBlocks11={this.movingCursorOnBlocks11}/>
 
-				<div className="SETTINGS_BLOCK">
-
-					<div className="SETTINGS">
-						{settings}
-					</div>
-
-					<div className="SETUP-BUTTON">
-						<button onClick={this.onSetClick}>SET</button>
-					</div>
-
-				</div>
-
-
-				<div className="COUNTER_BLOCK">
-
-					<div className="COUNTER">
-						<span>{this.state.counter}</span>
-					</div>
-
-					<div className="CONTROL-BUTTONS">
-						<button onClick={this.onIncClick} disabled={this.state.disabled}>INC</button>
-						<button onClick={this.onResetClick}>RESET</button>
-					</div>
-
-				</div>
-
+				<CounterPanel counter={this.state.counter} onIncClick={this.onIncClick} onResetClick={this.onResetClick}
+							  disabled={this.state.disabled} isFirstPanelDisabled={this.state.isFirstPanelDisabled}
+							  movingCursorOnBlocks22={this.movingCursorOnBlocks22}/>
 			</div>
 		);
 	}

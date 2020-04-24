@@ -1,8 +1,6 @@
 import React from 'react';
 
-import './../App.css';
-
-class ValueSetting extends React.Component {
+class SettingValue extends React.Component {
 
 	onSettingChange = (e) => {
 		this.props.changeValue (this.props.settingValues.id, e.currentTarget.value);
@@ -10,7 +8,7 @@ class ValueSetting extends React.Component {
 
 	render = () => {
 		return (
-			<div className="">
+			<div className="SETTING_VALUE">
 				<span>{this.props.settingValues.title}</span>
 				<input type={this.props.settingValues.type} min={this.props.settingValues.min}
 					   value={this.props.settingValues.value} onChange={this.onSettingChange}/>
@@ -20,4 +18,4 @@ class ValueSetting extends React.Component {
 	}
 }
 
-export default ValueSetting;
+export default SettingValue;
