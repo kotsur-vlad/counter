@@ -1,30 +1,18 @@
 import React from 'react';
 
-import SettingValue from "./SettingValue";
+import Settings from "./Settings";
 
 class SettingsPanel extends React.Component {
 
-	onMouseOut = (e) => {
-		this.props.movingCursorOnBlocks11(e.target.className);
-		console.log (e.target.className);
-	};
-
 	render = () => {
 
-		let settings = this.props.settingValues.map (set => <SettingValue changeValue={this.props.changeValue}
-																		  settingValues={set}/>);
-
-		let settingsPanelClassName = this.props.isFirstPanelDisabled ? "SETTINGS_PANEL deactivated_panel" : "SETTINGS_PANEL";
-
 		return (
-			<div className={settingsPanelClassName} onMouseOut={this.onMouseOut}>
+			<div className="SETTINGS_PANEL" >
 
-				<div className="SETTINGS">
-					{settings}
-				</div>
+				<Settings/>
 
 				<div className="SETUP-BUTTON">
-					<button onClick={this.props.onSetClick}>SET</button>
+					<button>set</button>
 				</div>
 
 			</div>
