@@ -19,6 +19,7 @@ class App extends React.Component {
 		startValue: 0,
 		maxValue: 1,
 		counter: 0,
+		isMaxValue: false,
 		disabled: false,
 		isFirstPanelDisabled: true
 	};
@@ -32,7 +33,8 @@ class App extends React.Component {
 			})
 		} else {
 			this.setState ({
-				disabled: true
+				disabled: true,
+				isMaxValue: true
 			})
 		}
 	};
@@ -40,15 +42,12 @@ class App extends React.Component {
 	onResetClick = () => {
 		this.setState ({
 			counter: this.state.startValue,
-			disabled: false
+			disabled: false,
+			isMaxValue: false
 		});
 	}
 
 	onSetClick = () => {
-		if (this.state.settingValues[0].value >= this.state.settingValues[1].value) {
-			alert ("eafwe");
-
-		}
 		this.state.settingValues.map (set => {
 			if (set.title === "start value: ") {
 				this.setState ({
@@ -76,13 +75,11 @@ class App extends React.Component {
 		this.setState ({
 			settingValues: newSettings,
 			disabled: true
+		}, () => {
+			if (this.state.settingValues[0].value >= this.state.settingValues[1].value) {
+				console.log ("eafwe");
+			}
 		});
-		// this.setState ( (state) => {
-		// 	return {
-		// 		settingValues: newSettings,
-		// 		disabled: true
-		// 	}
-		// });
 	};
 
 	movingCursorOnBlocks11 = (element) => {
@@ -110,7 +107,7 @@ class App extends React.Component {
 							   movingCursorOnBlocks11={this.movingCursorOnBlocks11}/>
 
 				<CounterPanel counter={this.state.counter} onIncClick={this.onIncClick} onResetClick={this.onResetClick}
-							  disabled={this.state.disabled} isFirstPanelDisabled={this.state.isFirstPanelDisabled}
+							  disabled={this.state.disabled} isMaxValue={this.state.isMaxValue} isFirstPanelDisabled={this.state.isFirstPanelDisabled}
 							  movingCursorOnBlocks22={this.movingCursorOnBlocks22}/>
 			</div>
 		);

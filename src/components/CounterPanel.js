@@ -10,11 +10,12 @@ class CounterPanel extends React.Component {
 	render = () => {
 
 		let counterPanelClassName = !this.props.isFirstPanelDisabled ? "COUNTER_PANEL deactivated_panel" : "COUNTER_PANEL";
+		let counterClassName = this.props.isMaxValue ? "COUNTER max_counter_value" : "COUNTER";
 
 		return (
 			<div className={counterPanelClassName} onMouseOut={this.onMouseOut}>
 
-				<div className="COUNTER">
+				<div className={counterClassName}>
 					<span>{this.props.counter}</span>
 				</div>
 

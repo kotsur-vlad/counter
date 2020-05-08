@@ -84,3 +84,9 @@
 	opacity: 0.4;
 	/*pointer-events: none;*/
 }
+
+/*Для максимального значения*/
+.max_counter_value {
+	color: red;
+	/*pointer-events: none;*/
+}
