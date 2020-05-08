@@ -10,7 +10,25 @@ class App extends React.Component {
 		counter: 0,
 		startValue: 0,
 		maxValue: 5,
+		error: false,
+		disabledINC: false,
+		disabledRESET: false,
+		disabledSET: true
 	};
+
+	checkComparingValues = (isError, isDisabled) => {
+		this.setState ({
+			error: isError,
+			disabledSET: isDisabled
+		})
+	};
+
+	checkDisablingButtons = (isDisabled) => {
+		this.setState ({
+			disabledINC: isDisabled,
+			disabledRESET: isDisabled
+		})
+	}
 
 	onIncClick = () => {
 		let counter = this.state.counter;
@@ -19,21 +37,40 @@ class App extends React.Component {
 			this.setState ({
 				counter: ++counter
 			})
+		} else {
+			this.setState ({
+				disabledINC: true
+			})
 		}
 	};
 
 	onResetClick = () => {
 		let startValue = this.state.startValue;
-		this.setState({
-			counter: startValue
+		this.setState ({
+			counter: startValue,
+			disabledINC: false
 		})
+	};
+
+	onSetClick = () => {
+		let startValue = this.state.startValue;
+		this.setState ({
+			counter: startValue,
+			disabledINC: false,
+			disabledRESET: false,
+			disabledSET: true
+		})
+		alert ('fswef')
 	};
 
 	render = () => {
 		return (
 			<div className="App">
-				<SettingsPanel/>
-				<CounterPanel counter={this.state.counter} onIncClick={this.onIncClick} onResetClick={this.onResetClick}/>
+				<SettingsPanel disabledSET={this.state.disabledSET} onSetClick={this.onSetClick}
+							   checkComparingValues={this.checkComparingValues} checkDisablingButtons={this.checkDisablingButtons}/>
+				<CounterPanel counter={this.state.counter} error={this.state.error} disabledINC={this.state.disabledINC}
+							  disabledRESET={this.state.disabledRESET} onIncClick={this.onIncClick}
+							  onResetClick={this.onResetClick}/>
 			</div>
 		);
 	}

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import SettingItem from "./SettingItem";
 
 class Settings extends React.Component {
@@ -8,17 +9,33 @@ class Settings extends React.Component {
 			{id: 1, title: "start value: ", type: "number", min: 0, value: 0},
 			{id: 2, title: "max value: ", type: "number", min: 1, value: 1}
 		],
-		startValue: 0,
-		maxValue: 1,
-		error: false
+		error: false,
+		disabledSET: false,
+		disabledCounterButtons: false
 	}
+
+	isIncorrectValues = () => {
+		this.props.checkComparingValues (this.state.error, this.state.disabledSET)
+	};
+
+	isDisabledCounterButtons = () => {
+		this.props.checkDisablingButtons (this.state.disabledCounterButtons)
+	};
 
 	comparingValues = () => {
 		let arrValues = this.state.settingValues.map (set => {
 			return set.value;
 		})
 		if (arrValues[0] >= arrValues[1]) {
-			alert ("dfsgvrw")
+			this.setState ({
+				error: true,
+				disabledSET: true
+			}, () => this.isIncorrectValues ())
+		} else {
+			this.setState ({
+				error: false,
+				disabledSET: false
+			}, () => this.isIncorrectValues ())
 		}
 	};
 
@@ -30,9 +47,11 @@ class Settings extends React.Component {
 			return set;
 		});
 		this.setState ({
-			settingValues: newSettings
+			settingValues: newSettings,
+			disabledCounterButtons: true
 		}, () => {
-			this.comparingValues ()
+			this.comparingValues ();
+			this.isDisabledCounterButtons ();
 		})
 	};
 
