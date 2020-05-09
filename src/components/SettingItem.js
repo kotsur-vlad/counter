@@ -10,7 +10,7 @@ class SettingItem extends React.Component {
 		return (
 			<div className="SETTING_VALUE">
 				<span>{this.props.setting.title}</span>
-				<input onChange={this.onSettingChange} type={this.props.setting.type} min={this.props.setting.min} value={this.props.setting.value}/>
+				<input onChange={this.onSettingChange} onFocus={this.onSettingChange} type={this.props.setting.type} min={this.props.setting.min} value={this.props.setting.value}/>
 			</div>
 		);
 	}

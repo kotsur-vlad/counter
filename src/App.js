@@ -23,7 +23,7 @@ class App extends React.Component {
 		})
 	};
 
-	checkDisablingButtons = (isDisabled) => {
+	checkCounterButtons = (isDisabled) => {
 		this.setState ({
 			disabledINC: isDisabled,
 			disabledRESET: isDisabled
@@ -67,7 +67,7 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<SettingsPanel disabledSET={this.state.disabledSET} onSetClick={this.onSetClick}
-							   checkComparingValues={this.checkComparingValues} checkDisablingButtons={this.checkDisablingButtons}/>
+							   checkComparingValues={this.checkComparingValues} checkCounterButtons={this.checkCounterButtons}/>
 				<CounterPanel counter={this.state.counter} error={this.state.error} disabledINC={this.state.disabledINC}
 							  disabledRESET={this.state.disabledRESET} onIncClick={this.onIncClick}
 							  onResetClick={this.onResetClick}/>
