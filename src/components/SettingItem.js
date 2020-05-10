@@ -7,8 +7,11 @@ class SettingItem extends React.Component {
 	};
 
 	render = () => {
+
+		let settingValueClassName = this.props.isError ? "SETTING_VALUE incorrect_value" : "SETTING_VALUE";
+
 		return (
-			<div className="SETTING_VALUE">
+			<div className={settingValueClassName}>
 				<span>{this.props.setting.title}</span>
 				<input onChange={this.onSettingChange} onFocus={this.onSettingChange} type={this.props.setting.type} min={this.props.setting.min} value={this.props.setting.value}/>
 			</div>

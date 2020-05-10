@@ -90,3 +90,9 @@
 	color: red;
 	/*pointer-events: none;*/
 }
+
+/*Для красного обрамления ошибки инпута*/
+.incorrect_value {
+	color: red;
+	/*pointer-events: none;*/
+}

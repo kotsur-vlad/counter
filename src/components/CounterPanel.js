@@ -4,13 +4,14 @@ class CounterPanel extends React.Component {
 
 	render = () => {
 
-		return (
-			<div className="COUNTER_PANEL" >
+		let counterClassName = (this.props.disabledINC && !this.props.isChanging) ? "COUNTER max_counter_value" : "COUNTER";
 
-				<div className="COUNTER">
-					{this.props.error
-						? <span>Введи норм значения</span>
-						: <span>{this.props.counter}</span>
+		return (
+			<div className="COUNTER_PANEL">
+
+				<div className={counterClassName}>
+					{this.props.isError ? <span>Введи норм значения</span> :
+						this.props.isChanging ? <span>меняй меняй</span> : <span>{this.props.counter}</span>
 					}
 				</div>
 
