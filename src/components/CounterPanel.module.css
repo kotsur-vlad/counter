@@ -1,0 +1,72 @@
+/*Панель счетчика*/
+.counter_panel {
+    composes: settings_panel from "./SettingsPanel.module.css";
+}
+
+/*Блок всего счетчика*/
+.counter_wrapper {
+    font-size: 1.8rem;
+
+    flex-direction: row;
+    justify-content: center;
+
+    text-align: center;
+
+    composes: settings_items from "./SettingsPanel.module.css";
+}
+
+/*Блок всего счетчика при достижении максимального значения*/
+.counter_with_maxValue {
+    color: #57bfdd;
+}
+
+/*Сообщение о неверных значениях счетчика*/
+.counter_with_incorrectValues {
+    color: #f37979;
+}
+
+/*Сам счетчик*/
+.counter {
+    font-size: 3rem;
+}
+
+/*Блок с кнопками INC и RESET*/
+.control_buttons {
+    justify-content: space-evenly;
+
+    composes: setup from "./SettingsPanel.module.css";
+}
+
+/*Кнопка INC*/
+.inc_button {
+    background-color: #adf7ad;
+
+    composes: setup_button from "./SettingsPanel.module.css";
+}
+
+.inc_button:disabled, .reset_button:disabled {
+    opacity: 0.4;
+}
+
+.inc_button:hover {
+    background-color: #87e287;
+}
+
+.inc_button:active {
+    background-color: #54cb54;
+}
+
+/*Кнопка RESET*/
+.reset_button {
+    background-color: #f8a1a1;
+
+    composes: inc_button;
+}
+
+.reset_button:hover {
+    background-color: #ee6f6f;
+}
+
+.reset_button:active {
+    background-color: #cf2929;
+}

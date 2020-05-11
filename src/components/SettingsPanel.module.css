@@ -1,0 +1,75 @@
+/*Панель настроек*/
+.settings_panel {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+
+    width: 28%;
+    min-width: 300px;
+    height: 44vh;
+
+    border: 5px solid #66a9bc;
+    border-radius: 7px;
+    box-shadow: 0 0 4px gray;
+}
+
+/*Блок настроек с полями ввода*/
+.settings_items {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    width: 77%;
+    min-width: 270px;
+    height: 22vh;
+
+    border: 3px solid #2086a3;
+    border-radius: 3px;
+}
+
+/*Блок с кнопкой SET*/
+.setup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 77%;
+    min-width: 270px;
+    height: 7vh;
+
+    border: 3px solid #2086a3;
+    border-radius: 3px;
+}
+
+/*Кнопка SET*/
+.setup_button {
+    font-size: 1.3rem;
+    font-weight: 500;
+
+    width: 20%;
+    min-width: 80px;
+    height: 3vh;
+
+    cursor: pointer;
+    user-select: none;
+    transition: 0.2s;
+
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    background-color: #f5f597;
+}
+
+.setup_button:disabled {
+    opacity: 0.4;
+}
+
+.setup_button:hover {
+    background-color: #f6f655;
+}
+
+.setup_button:active {
+    background-color: #efef11;
+}
